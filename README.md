@@ -19,6 +19,7 @@ var Highlight = require('react-highlighter');
 - `search`: The string of text to highlight
 - `caseSensitive`: Determine whether string matching should be case-sensitive. Defaults to `false`
 - `matchElement`: HTML tag name to wrap around highlighted text. Defaults to `strong`
+- `matchClass`: HTML class to wrap around highlighted text. Defaults to `highlight`
 
 
 ## Development
