@@ -27,6 +27,13 @@ describe('Highlight element', function() {
 
   });
 
+  it('should support custom HTML elements', function() {
+    var element = React.createElement(Highlight, {search: 'world', matchElement: 'em'}, 'Hello World');
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'em');
+    expect(matches).to.have.length(1);
+  });
+
   it('has classes', function() {
     var element = React.createElement(Highlight, {search: 'world', className: 'myHighlighter'}, 'Hello World');
     var node = TestUtils.renderIntoDocument(element);
