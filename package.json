@@ -1,6 +1,6 @@
 {
   "name": "react-highlighter",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Highlight select fragments of texts",
   "main": "lib/highlighter.js",
   "peerDependencies": {
