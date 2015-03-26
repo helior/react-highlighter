@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/react-highlighter.svg)](http://badge.fury.io/js/react-highlighter)
+
 # react-highlighter
 Highlight select fragments of a string using an HTML element and/or a class.
 
@@ -13,7 +15,14 @@ var Highlight = require('react-highlighter');
 
 <Highlight search="brown">The quick brown fox jumps over the lazy dog</Highlight>
 ```
-
 ## Props
 - `search`: The string of text to highlight
 - `caseSensitive`: Determine whether string matching should be case-sensitive
+
+
+## Development
+### Testing
+Using Mocha/Chai/React.addons.TestUtils for testing.
+```
+npm test
+```
