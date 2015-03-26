@@ -27,14 +27,21 @@ describe('Highlight element', function() {
 
   });
 
-  it('should support custom HTML elements', function() {
+  it('should support custom HTML tag for matching elements', function() {
     var element = React.createElement(Highlight, {search: 'world', matchElement: 'em'}, 'Hello World');
     var node = TestUtils.renderIntoDocument(element);
     var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'em');
     expect(matches).to.have.length(1);
   });
 
-  it('has classes', function() {
+  it('should support custom className for matching element', function() {
+    var element = React.createElement(Highlight, {search: 'Seek', matchClass: 'fffffound'}, 'Hide and Seek');
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithClass(node, 'fffffound');
+    expect(matches).to.have.length(1);
+  });
+
+  it('should support passing props to parent element', function() {
     var element = React.createElement(Highlight, {search: 'world', className: 'myHighlighter'}, 'Hello World');
     var node = TestUtils.renderIntoDocument(element);
     var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'strong');
