@@ -1,4 +1,5 @@
 [![npm version](https://badge.fury.io/js/react-highlighter.svg)](http://badge.fury.io/js/react-highlighter)
+[![Build Status](https://travis-ci.org/helior/react-highlighter.svg?branch=master)](https://travis-ci.org/helior/react-highlighter)
 
 # react-highlighter
 Highlight select fragments of a string using an HTML element and/or a class.
