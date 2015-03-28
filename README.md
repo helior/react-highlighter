@@ -17,8 +17,8 @@ var Highlight = require('react-highlighter');
 <Highlight search="brown">The quick brown fox jumps over the lazy dog</Highlight>
 ```
 ## Props
-- `search`: The string of text to highlight
-- `caseSensitive`: Determine whether string matching should be case-sensitive. Defaults to `false`
+- `search`: The string of text (or Regular Expression) to highlight
+- `caseSensitive`: Determine whether string matching should be case-sensitive. Not applicable to regular expression searches. Defaults to `false`
 - `matchElement`: HTML tag name to wrap around highlighted text. Defaults to `strong`
 - `matchClass`: HTML class to wrap around highlighted text. Defaults to `highlight`
 
