@@ -49,4 +49,13 @@ describe('Highlight element', function() {
     expect(node.getDOMNode().className).to.equal('myHighlighter');
     expect(matches[0].getDOMNode().className).to.equal('highlight')
   });
+
+  it('should support regular expressions in search', function() {
+    var element = React.createElement(Highlight, {search: /[A-Za-z]+/}, 'Easy as 123, ABC...');
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'strong');
+    expect(matches[0].getDOMNode().textContent).to.equal('Easy');
+    expect(matches[1].getDOMNode().textContent).to.equal('as');
+    expect(matches[2].getDOMNode().textContent).to.equal('ABC');
+  });
 });
