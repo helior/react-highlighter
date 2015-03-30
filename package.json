@@ -7,7 +7,8 @@
     "react": "0.12.x"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/mocha",
+    "dist": "./node_modules/.bin/webpack"
   },
   "jest": {
     "unmockedModulePathPatterns": [
@@ -32,6 +33,7 @@
   "devDependencies": {
     "chai": "^2.1.2",
     "jsdom": "^4.0.5",
-    "mocha": "^2.2.1"
+    "mocha": "^2.2.1",
+    "webpack": "^1.7.3"
   }
 }
