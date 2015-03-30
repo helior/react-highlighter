@@ -32,6 +32,7 @@
   "devDependencies": {
     "chai": "^2.1.2",
     "jsdom": "^4.0.5",
-    "mocha": "^2.2.1"
+    "mocha": "^2.2.1",
+    "webpack": "^1.7.3"
   }
 }
