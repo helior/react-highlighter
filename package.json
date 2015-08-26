@@ -4,7 +4,7 @@
   "description": "Highlight select fragments of texts",
   "main": "lib/highlighter.js",
   "peerDependencies": {
-    "react": ">= 0.12.0"
+    "react": ">= 0.12.0 || 0.14.0-beta1"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha",
