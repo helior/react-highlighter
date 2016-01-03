@@ -58,4 +58,9 @@ describe('Highlight element', function() {
     expect(matches[1].getDOMNode().textContent).to.equal('as');
     expect(matches[2].getDOMNode().textContent).to.equal('ABC');
   });
+
+  it('should support escaping arbitrary string in search', function() {
+    var element = React.createElement(Highlight, {search: 'Test ('}, 'Test (should not throw)');
+    expect(TestUtils.renderIntoDocument.bind(TestUtils, element)).to.not.throw(Error);
+  });
 });
