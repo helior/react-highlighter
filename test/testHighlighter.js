@@ -46,7 +46,7 @@ describe('Highlight element', function() {
     var element = React.createElement(Highlight, {search: 'Seek', matchStyle: { color: 'red' }}, 'Hide and Seek');
     var node = TestUtils.renderIntoDocument(element);
     var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'strong');
-    expect(matches[0].props.style).to.eql({ color: 'red' });
+    expect(matches[0].getAttribute('style')).to.eql('color:red;');
   });
 
   it('should support passing props to parent element', function() {
