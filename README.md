@@ -30,3 +30,9 @@ Using Mocha/Chai/React.addons.TestUtils for testing.
 ```
 npm test
 ```
+
+### Code Coverage
+Generate a report using Istanbul to make sure your tests are touching everything! FYI, Travis will fail the build if there isn't at least 90% of statement coverage and 100% function coverage.
+```
+npm run coverage
+```
