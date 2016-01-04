@@ -7,7 +7,7 @@
     "react": "^0.14.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/istanbul check-coverage --statement 90 --function 100 && ./node_modules/.bin/_mocha",
+    "test": "./node_modules/.bin/_mocha",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -R spec",
     "check-coverage": "./node_modules/.bin/istanbul check-coverage --statement 90 --function 100",
     "dist": "./node_modules/.bin/webpack"
