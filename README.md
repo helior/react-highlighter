@@ -21,6 +21,7 @@ var Highlight = require('react-highlighter');
 - `caseSensitive`: Determine whether string matching should be case-sensitive. Not applicable to regular expression searches. Defaults to `false`
 - `matchElement`: HTML tag name to wrap around highlighted text. Defaults to `strong`
 - `matchClass`: HTML class to wrap around highlighted text. Defaults to `highlight`
+- `matchStyle`: Custom style for the match element around highlighted text.
 
 
 ## Development
@@ -28,4 +29,10 @@ var Highlight = require('react-highlighter');
 Using Mocha/Chai/React.addons.TestUtils for testing.
 ```
 npm test
+```
+
+### Code Coverage
+Generate a report using Istanbul to make sure your tests are touching everything! FYI, Travis will fail the build if there isn't at least 90% of statement coverage and 100% function coverage.
+```
+npm run coverage
 ```
