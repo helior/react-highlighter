@@ -39,5 +39,8 @@
     "mocha": "^2.3.4",
     "react-dom": "~0.14.3",
     "webpack": "^1.7.3"
+  },
+  "dependencies": {
+    "escape-string-regexp": "^1.0.4"
   }
 }
