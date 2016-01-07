@@ -1,5 +1,6 @@
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
+var ReactDOM = require('react-dom');
 var expect = require('chai').expect;
 var Highlight = require('..');
 
@@ -14,7 +15,7 @@ describe('Highlight element', function() {
 
     expect(TestUtils.isElement(element)).to.be.true;
     expect(TestUtils.isElementOfType(element, Highlight)).to.be.true;
-    expect(matches[0].getDOMNode().textContent).to.equal('World');
+    expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('World');
   });
 
   it('should have children', function() {
@@ -22,7 +23,7 @@ describe('Highlight element', function() {
     var node = TestUtils.renderIntoDocument(element);
     var matches = TestUtils.scryRenderedDOMComponentsWithClass(node, 'highlight');
 
-    expect(node.getDOMNode().children.length).to.equal(3);
+    expect(ReactDOM.findDOMNode(node).children.length).to.equal(3);
     expect(matches).to.have.length(1);
 
   });
@@ -41,21 +42,33 @@ describe('Highlight element', function() {
     expect(matches).to.have.length(1);
   });
 
+  it('should support custom style for matching element', function() {
+    var element = React.createElement(Highlight, {search: 'Seek', matchStyle: { color: 'red' }}, 'Hide and Seek');
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'strong');
+    expect(matches[0].getAttribute('style')).to.eql('color:red;');
+  });
+
   it('should support passing props to parent element', function() {
     var element = React.createElement(Highlight, {search: 'world', className: 'myHighlighter'}, 'Hello World');
     var node = TestUtils.renderIntoDocument(element);
     var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'strong');
 
-    expect(node.getDOMNode().className).to.equal('myHighlighter');
-    expect(matches[0].getDOMNode().className).to.equal('highlight')
+    expect(ReactDOM.findDOMNode(node).className).to.equal('myHighlighter');
+    expect(ReactDOM.findDOMNode(matches[0]).className).to.equal('highlight')
   });
 
   it('should support regular expressions in search', function() {
     var element = React.createElement(Highlight, {search: /[A-Za-z]+/}, 'Easy as 123, ABC...');
     var node = TestUtils.renderIntoDocument(element);
     var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'strong');
-    expect(matches[0].getDOMNode().textContent).to.equal('Easy');
-    expect(matches[1].getDOMNode().textContent).to.equal('as');
-    expect(matches[2].getDOMNode().textContent).to.equal('ABC');
+    expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('Easy');
+    expect(ReactDOM.findDOMNode(matches[1]).textContent).to.equal('as');
+    expect(ReactDOM.findDOMNode(matches[2]).textContent).to.equal('ABC');
+  });
+
+  it('should support escaping arbitrary string in search', function() {
+    var element = React.createElement(Highlight, {search: 'Test ('}, 'Test (should not throw)');
+    expect(TestUtils.renderIntoDocument.bind(TestUtils, element)).to.not.throw(Error);
   });
 });
