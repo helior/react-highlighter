@@ -71,4 +71,14 @@ describe('Highlight element', function() {
     var element = React.createElement(Highlight, {search: 'Test ('}, 'Test (should not throw)');
     expect(TestUtils.renderIntoDocument.bind(TestUtils, element)).to.not.throw(Error);
   });
+
+  it('should not throw on long strings', function() {
+    var longString = 'The quick brown fox jumped over the lazy dog. ';
+    for (var i = 0; i < 4; i++) {
+      longString += longString;
+    }
+    var element = React.createElement(Highlight, {search: /([A-Za-z])+/}, longString);
+    expect(TestUtils.renderIntoDocument.bind(TestUtils, element)).not.to.throw(Error);
+
+  });
 });
