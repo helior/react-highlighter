@@ -28,6 +28,17 @@ describe('Highlight element', function() {
 
   });
 
+  it('should allow empty search', function() {
+    var element = React.createElement(Highlight, {search: ''}, 'The quick brown fox jumped over the lazy dog.');
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithClass(node, 'highlight');
+
+    expect(ReactDOM.findDOMNode(node).children.length).to.equal(0);
+    expect(matches).to.have.length(0);
+
+  });
+
+
   it('should support custom HTML tag for matching elements', function() {
     var element = React.createElement(Highlight, {search: 'world', matchElement: 'em'}, 'Hello World');
     var node = TestUtils.renderIntoDocument(element);
