@@ -1,5 +1,6 @@
 [![npm version](https://badge.fury.io/js/react-highlighter.svg)](http://badge.fury.io/js/react-highlighter)
 [![Build Status](https://travis-ci.org/helior/react-highlighter.svg?branch=master)](https://travis-ci.org/helior/react-highlighter)
+[![Coverage Status](https://coveralls.io/repos/github/helior/react-highlighter/badge.svg?branch=master)](https://coveralls.io/github/helior/react-highlighter?branch=master)
 
 # react-highlighter
 Highlight select fragments of a string using an HTML element and/or a class.
@@ -36,3 +37,5 @@ Generate a report using Istanbul to make sure your tests are touching everything
 ```
 npm run coverage
 ```
+
+Coveralls.io integration requires that the environment variable `COVERALLS_REPO_TOKEN` is set.
