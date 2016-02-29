@@ -7,15 +7,11 @@
     "react": "^0.14.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/_mocha",
-    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -R spec",
-    "check-coverage": "./node_modules/.bin/istanbul check-coverage --statement 90 --function 100",
+    "test": "_mocha",
+    "coverage": "istanbul cover _mocha -- -R spec",
+    "check-coverage": "istanbul check-coverage --statement 90 --function 100",
+    "test-cover": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose",
     "dist": "rm -rf dist/* && ./node_modules/.bin/webpack"
-  },
-  "jest": {
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react"
-    ]
   },
   "repository": {
     "type": "git",
@@ -34,10 +30,12 @@
   "homepage": "https://github.com/helior/react-highlighter",
   "devDependencies": {
     "chai": "^2.1.2",
+    "coveralls": "^2.11.2",
     "istanbul": "^0.4.1",
     "jsdom": "^3.1.2",
     "mocha": "^2.3.4",
-    "react-dom": "~0.14.3",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
     "webpack": "^1.7.3"
   },
   "dependencies": {
