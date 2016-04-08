@@ -40,7 +40,6 @@
     "webpack": "^1.7.3"
   },
   "dependencies": {
-    "escape-string-regexp": "^1.0.4",
-    "object-assign": "^4.0.1"
+    "escape-string-regexp": "^1.0.4"
   }
 }
