@@ -4,7 +4,7 @@
   "description": "Highlight select fragments of texts",
   "main": "lib/highlighter.js",
   "peerDependencies": {
-    "react": "^0.14.0"
+    "react": "^0.14.0||^15.0.0"
   },
   "scripts": {
     "test": "_mocha",
@@ -34,11 +34,13 @@
     "istanbul": "^0.4.1",
     "jsdom": "^3.1.2",
     "mocha": "^2.3.4",
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0",
+    "react": "^15.0.0",
+    "react-addons-test-utils": "^15.0.0",
+    "react-dom": "^15.0.0",
     "webpack": "^1.7.3"
   },
   "dependencies": {
-    "escape-string-regexp": "^1.0.4"
+    "escape-string-regexp": "^1.0.4",
+    "object-assign": "^4.0.1"
   }
 }
