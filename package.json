@@ -31,11 +31,12 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "coveralls": "^2.11.9",
+    "create-react-class": "^15.5.2",
     "istanbul": "^0.4.4",
     "jsdom": "^9.4.0",
     "mocha": "^2.5.3",
+    "prop-types": "^15.5.8",
     "react": "^15.2.0",
-    "react-addons-test-utils": "^15.2.0",
     "react-dom": "^15.2.0",
     "webpack": "^1.13.1"
   },
