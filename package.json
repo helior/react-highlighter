@@ -1,6 +1,6 @@
 {
   "name": "react-highlighter",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Highlight select fragments of texts",
   "main": "lib/highlighter.js",
   "peerDependencies": {
@@ -31,7 +31,6 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "coveralls": "^2.11.9",
-
     "istanbul": "^0.4.4",
     "jsdom": "^9.4.0",
     "mocha": "^2.5.3",
