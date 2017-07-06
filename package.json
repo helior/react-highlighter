@@ -46,6 +46,7 @@
     "blacklist": "^1.1.2",
     "create-react-class": "^15.5.2",
     "escape-string-regexp": "^1.0.5",
-    "prop-types": "^15.5.8"
+    "prop-types": "^15.5.8",
+    "react-dom-factories": "^1.0.0"
   }
 }
