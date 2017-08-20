@@ -12,7 +12,7 @@ npm install react-highlighter --save
 ```
 
 ## Usage
-```
+```js
 var Highlight = require('react-highlighter');
 
 <Highlight search="brown">The quick brown fox jumps over the lazy dog</Highlight>

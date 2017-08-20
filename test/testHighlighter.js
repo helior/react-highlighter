@@ -1,5 +1,5 @@
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+var React = require('react');
+var TestUtils = require('react-dom/test-utils');
 var ReactDOM = require('react-dom');
 var expect = require('chai').expect;
 var Highlight = require('..');
@@ -57,7 +57,7 @@ describe('Highlight element', function() {
     var element = React.createElement(Highlight, {search: 'Seek', matchStyle: { color: 'red' }}, 'Hide and Seek');
     var node = TestUtils.renderIntoDocument(element);
     var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'strong');
-    expect(matches[0].getAttribute('style')).to.eql('color:red;');
+    expect(matches[0].getAttribute('style')).to.eql('color: red;');
   });
 
   it('should support passing props to parent element', function() {
