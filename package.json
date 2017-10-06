@@ -1,6 +1,6 @@
 {
   "name": "react-highlighter",
-  "version": "0.4.1",
+  "version": "0.4.1-dcubed",
   "description": "Highlight select fragments of texts",
   "main": "lib/highlighter.js",
   "files": [
@@ -8,14 +8,14 @@
     "dist"
   ],
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0"
+    "react": "^16.0.0"
   },
   "scripts": {
     "test": "_mocha",
     "coverage": "istanbul cover _mocha -- -R spec",
     "check-coverage": "istanbul check-coverage --statement 90 --function 100",
-    "test-cover": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose",
-    "dist": "rm -rf dist/* && ./node_modules/.bin/webpack"
+    "test-cover": "istanbul cover _mocha --report lcovonly -- -R spec && cat coverage/lcov.info | \"node_modules/coveralls/bin/coveralls.js\" --verbose",
+    "dist": "\"node_modules/.bin/rimraf\" dist/* && \"node_modules/.bin/webpack\""
   },
   "repository": {
     "type": "git",
@@ -33,19 +33,19 @@
   },
   "homepage": "https://github.com/helior/react-highlighter",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "coveralls": "^2.11.9",
-    "istanbul": "^0.4.4",
-    "jsdom": "^9.4.0",
-    "mocha": "^2.5.3",
-    "react": "^15.2.0",
-    "react-dom": "^15.2.0",
-    "webpack": "^1.13.1"
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "istanbul": "^0.4.5",
+    "jsdom": "^11.3.0",
+    "mocha": "^4.0.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "webpack": "^3.6.0"
   },
   "dependencies": {
-    "blacklist": "^1.1.2",
-    "create-react-class": "^15.5.2",
+    "blacklist": "^1.1.4",
+    "create-react-class": "^15.6.2",
     "escape-string-regexp": "^1.0.5",
-    "prop-types": "^15.5.8"
+    "prop-types": "^15.6.0"
   }
 }
