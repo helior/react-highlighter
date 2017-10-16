@@ -12,9 +12,9 @@
   },
   "scripts": {
     "test": "_mocha",
-    "coverage": "istanbul cover _mocha -- -R spec",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec",
     "check-coverage": "istanbul check-coverage --statement 90 --function 100",
-    "test-cover": "istanbul cover _mocha --report lcovonly -- -R spec && cat coverage/lcov.info | coveralls.js --verbose",
+    "test-cover": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && mcat coverage/lcov.info | coveralls --verbose",
     "dist": "rimraf dist/* && webpack"
   },
   "repository": {
@@ -37,6 +37,7 @@
     "coveralls": "^3.0.0",
     "istanbul": "^0.4.5",
     "jsdom": "^11.3.0",
+    "minicat": "^1.0.0",
     "mocha": "^4.0.1",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
