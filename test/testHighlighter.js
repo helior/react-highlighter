@@ -4,7 +4,11 @@ var ReactDOM = require('react-dom');
 var expect = require('chai').expect;
 var Highlight = require('..');
 
-global.document = require('jsdom').jsdom();
+var jsdom = require('jsdom');
+const { JSDOM } = jsdom;
+
+const { document } = (new JSDOM('')).window;
+global.document = document;
 global.window = global.document.defaultView;
 
 describe('Highlight element', function() {
@@ -25,7 +29,6 @@ describe('Highlight element', function() {
 
     expect(ReactDOM.findDOMNode(node).children.length).to.equal(3);
     expect(matches).to.have.length(1);
-
   });
 
   it('should allow empty search', function() {
@@ -35,9 +38,7 @@ describe('Highlight element', function() {
 
     expect(ReactDOM.findDOMNode(node).children.length).to.equal(0);
     expect(matches).to.have.length(0);
-
   });
-
 
   it('should support custom HTML tag for matching elements', function() {
     var element = React.createElement(Highlight, {search: 'world', matchElement: 'em'}, 'Hello World');
@@ -90,6 +91,5 @@ describe('Highlight element', function() {
     }
     var element = React.createElement(Highlight, {search: /([A-Za-z])+/}, longString);
     expect(TestUtils.renderIntoDocument.bind(TestUtils, element)).not.to.throw(Error);
-
   });
 });

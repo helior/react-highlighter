@@ -8,7 +8,7 @@
     "dist"
   ],
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^15.0.0 || ^16.0.0"
   },
   "scripts": {
     "test": "_mocha",
@@ -40,6 +40,7 @@
     "mocha": "^4.0.1",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
+    "rimraf": "^2.6.2",
     "webpack": "^2.0.0 || ^3.0.0"
   },
   "dependencies": {
