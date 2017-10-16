@@ -14,8 +14,8 @@
     "test": "_mocha",
     "coverage": "istanbul cover _mocha -- -R spec",
     "check-coverage": "istanbul check-coverage --statement 90 --function 100",
-    "test-cover": "istanbul cover _mocha --report lcovonly -- -R spec && cat coverage/lcov.info | \"node_modules/coveralls/bin/coveralls.js\" --verbose",
-    "dist": "\"node_modules/.bin/rimraf\" dist/* && \"node_modules/.bin/webpack\""
+    "test-cover": "istanbul cover _mocha --report lcovonly -- -R spec && cat coverage/lcov.info | coveralls.js --verbose",
+    "dist": "rimraf dist/* && webpack"
   },
   "repository": {
     "type": "git",
@@ -38,9 +38,9 @@
     "istanbul": "^0.4.5",
     "jsdom": "^11.3.0",
     "mocha": "^4.0.1",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "webpack": "^3.6.0"
+    "react": "^15.0.0 || ^16.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0",
+    "webpack": "^2.0.0 || ^3.0.0"
   },
   "dependencies": {
     "blacklist": "^1.1.4",

@@ -3,9 +3,9 @@ var pkg = require('./package.json');
 
 module.exports = [
   {
-    entry: './lib/highlighter.js',
+    entry: (__dirname + '/lib/highlighter.js'),
     output: {
-      path: './dist',
+      path:  (__dirname + '/dist'),
       pathinfo: true,
       sourcePrefix: '',
       filename: 'ReactHighlighter-v' + pkg.version + '.js',
@@ -17,9 +17,9 @@ module.exports = [
     }
   },
   {
-    entry: './lib/highlighter.js',
+    entry:  (__dirname + '/lib/highlighter.js'),
     output: {
-      path: './dist',
+      path:  (__dirname + '/dist'),
       filename: 'ReactHighlighter-v' + pkg.version + '.min.js',
       library: 'ReactHighlighter',
       libraryTarget: "umd"
