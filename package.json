@@ -8,7 +8,7 @@
     "dist"
   ],
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0"
+    "react": "^0.14.0 || ^15.0.0 || ^16.0.0"
   },
   "scripts": {
     "test": "_mocha",
@@ -38,8 +38,8 @@
     "istanbul": "^0.4.4",
     "jsdom": "^9.4.0",
     "mocha": "^2.5.3",
-    "react": "^15.2.0",
-    "react-dom": "^15.2.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "webpack": "^1.13.1"
   },
   "dependencies": {
