@@ -20,6 +20,8 @@ var Highlight = require('react-highlighter');
 ## Props
 - `search`: The string of text (or Regular Expression) to highlight
 - `caseSensitive`: Determine whether string matching should be case-sensitive. Not applicable to regular expression searches. Defaults to `false`
+- `ignoreDiacritics`: Determine whether string matching should ignore diacritics. Defaults to `false`
+- `diacriticsBlacklist`: These chars are treated like characters that don't have any diacritics.  Not applicable ignoreDiacritics is `false`. Defaults to none
 - `matchElement`: HTML tag name to wrap around highlighted text. Defaults to `mark`
 - `matchClass`: HTML class to wrap around highlighted text. Defaults to `highlight`
 - `matchStyle`: Custom style for the match element around highlighted text.

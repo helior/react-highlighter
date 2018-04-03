@@ -78,6 +78,35 @@ describe('Highlight element', function() {
     expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('TEST');
   });
 
+  it('should support matching diacritics exactly', function() {
+    var text = 'Café has a weird e. Cafééééé has five of them. Cafe has a normal e. Cafeeeee has five of them.';
+    var element = React.createElement(Highlight, {search: 'Cafe'}, text);
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(matches).to.have.length(2);
+    expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('Cafe');
+    expect(ReactDOM.findDOMNode(matches[1]).textContent).to.equal('Cafe');
+
+    var element = React.createElement(Highlight, {search: 'Café'}, text);
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(matches).to.have.length(2);
+    expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('Café');
+    expect(ReactDOM.findDOMNode(matches[1]).textContent).to.equal('Café');
+  });
+
+  it('should support ignoring diacritics', function() {
+    var text = 'Café has a weird e. Cafééééé has five of them. Cafe has a normal e. Cafeeeee has five of them.';
+    var element = React.createElement(Highlight, {search: 'Cafe', ignoreDiacritics: true}, text);
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(matches).to.have.length(4);
+    expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('Café');
+    expect(ReactDOM.findDOMNode(matches[1]).textContent).to.equal('Café');
+    expect(ReactDOM.findDOMNode(matches[2]).textContent).to.equal('Cafe');
+    expect(ReactDOM.findDOMNode(matches[3]).textContent).to.equal('Cafe');
+  });
+
   it('should support regular expressions in search', function() {
     var element = React.createElement(Highlight, {search: /[A-Za-z]+/}, 'Easy as 123, ABC...');
     var node = TestUtils.renderIntoDocument(element);
@@ -105,6 +134,66 @@ describe('Highlight element', function() {
     var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
     expect(matches).to.have.length(1);
     expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('zzz');
+  });
+
+  it('should support matching diacritics exactly with regex', function() {
+    var text = 'Café has a weird e. Cafééééé has five of them. Cafe has a normal e. Cafeeeee has five of them.';
+    var element = React.createElement(Highlight, {search: /Cafe/}, text);
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(matches).to.have.length(2);
+    expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('Cafe');
+    expect(ReactDOM.findDOMNode(matches[1]).textContent).to.equal('Cafe');
+
+    var element = React.createElement(Highlight, {search: /Café/}, text);
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(matches).to.have.length(2);
+    expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('Café');
+    expect(ReactDOM.findDOMNode(matches[1]).textContent).to.equal('Café');
+  });
+
+  it('should support ignoring diacritics with regex', function() {
+    var text = 'Café has a weird e. Cafééééé has five of them. Cafe has a normal e. Cafeeeee has five of them.';
+    var element = React.createElement(Highlight, {search: /Cafe+/, ignoreDiacritics: true}, text);
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(matches).to.have.length(4);
+    expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('Café');
+    expect(ReactDOM.findDOMNode(matches[1]).textContent).to.equal('Cafééééé');
+    expect(ReactDOM.findDOMNode(matches[2]).textContent).to.equal('Cafe');
+    expect(ReactDOM.findDOMNode(matches[3]).textContent).to.equal('Cafeeeee');
+  });
+
+  it('should support ignoring diacritics with blacklist', function() {
+    var text = 'Letter ä is a normal letter here: Ääkkösiä';
+    var element = React.createElement(Highlight, {search: 'Aakkosia', ignoreDiacritics: true, diacriticsBlacklist: 'Ää'}, text);
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(matches).to.have.length(0);
+
+    var element = React.createElement(Highlight, {search: 'Ääkkösiä', ignoreDiacritics: true, diacriticsBlacklist: 'Ää'}, text);
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(matches).to.have.length(1);
+    expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('Ääkkösiä');
+  });
+
+  it('should support ignoring diacritics with blacklist with regex', function() {
+    var text = 'Letter ä is a normal letter here: Ääkkösiä';
+    var element = React.createElement(Highlight, {search: /k+o/i, ignoreDiacritics: true, diacriticsBlacklist: 'Ää'}, text);
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(matches).to.have.length(1);
+    expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('kkö');
+
+    var element = React.createElement(Highlight, {search: /ä+/i, ignoreDiacritics: true, diacriticsBlacklist: 'Ää'}, text);
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(matches).to.have.length(3);
+    expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('ä');
+    expect(ReactDOM.findDOMNode(matches[1]).textContent).to.equal('Ää');
+    expect(ReactDOM.findDOMNode(matches[2]).textContent).to.equal('ä');
   });
 
   it('should support escaping arbitrary string in search', function() {
