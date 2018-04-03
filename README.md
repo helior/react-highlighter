@@ -20,7 +20,7 @@ var Highlight = require('react-highlighter');
 ## Props
 - `search`: The string of text (or Regular Expression) to highlight
 - `caseSensitive`: Determine whether string matching should be case-sensitive. Not applicable to regular expression searches. Defaults to `false`
-- `matchElement`: HTML tag name to wrap around highlighted text. Defaults to `strong`
+- `matchElement`: HTML tag name to wrap around highlighted text. Defaults to `mark`
 - `matchClass`: HTML class to wrap around highlighted text. Defaults to `highlight`
 - `matchStyle`: Custom style for the match element around highlighted text.
 

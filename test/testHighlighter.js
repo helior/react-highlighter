@@ -15,7 +15,7 @@ describe('Highlight element', function() {
   it('is what it says it is', function() {
     var element = React.createElement(Highlight, {search: 'world'}, 'Hello World');
     var node = TestUtils.renderIntoDocument(element);
-    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'strong');
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
 
     expect(TestUtils.isElement(element)).to.be.true;
     expect(TestUtils.isElementOfType(element, Highlight)).to.be.true;
@@ -57,14 +57,14 @@ describe('Highlight element', function() {
   it('should support custom style for matching element', function() {
     var element = React.createElement(Highlight, {search: 'Seek', matchStyle: { color: 'red' }}, 'Hide and Seek');
     var node = TestUtils.renderIntoDocument(element);
-    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'strong');
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
     expect(matches[0].getAttribute('style')).to.eql('color: red;');
   });
 
   it('should support passing props to parent element', function() {
     var element = React.createElement(Highlight, {search: 'world', className: 'myHighlighter'}, 'Hello World');
     var node = TestUtils.renderIntoDocument(element);
-    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'strong');
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
 
     expect(ReactDOM.findDOMNode(node).className).to.equal('myHighlighter');
     expect(ReactDOM.findDOMNode(matches[0]).className).to.equal('highlight')
@@ -73,7 +73,7 @@ describe('Highlight element', function() {
   it('should support regular expressions in search', function() {
     var element = React.createElement(Highlight, {search: /[A-Za-z]+/}, 'Easy as 123, ABC...');
     var node = TestUtils.renderIntoDocument(element);
-    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'strong');
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
     expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('Easy');
     expect(ReactDOM.findDOMNode(matches[1]).textContent).to.equal('as');
     expect(ReactDOM.findDOMNode(matches[2]).textContent).to.equal('ABC');
