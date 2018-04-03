@@ -70,6 +70,14 @@ describe('Highlight element', function() {
     expect(ReactDOM.findDOMNode(matches[0]).className).to.equal('highlight')
   });
 
+  it('should support case sensitive searches', function() {
+    var element = React.createElement(Highlight, {search: 'TEST', caseSensitive: true}, 'test Test TeSt TEST');
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(matches).to.have.length(1);
+    expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('TEST');
+  });
+
   it('should support regular expressions in search', function() {
     var element = React.createElement(Highlight, {search: /[A-Za-z]+/}, 'Easy as 123, ABC...');
     var node = TestUtils.renderIntoDocument(element);
@@ -77,6 +85,26 @@ describe('Highlight element', function() {
     expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('Easy');
     expect(ReactDOM.findDOMNode(matches[1]).textContent).to.equal('as');
     expect(ReactDOM.findDOMNode(matches[2]).textContent).to.equal('ABC');
+  });
+
+  it('should work when regular expressions in search do not match anything', function() {
+    var element = React.createElement(Highlight, {search: /z+/}, 'Easy as 123, ABC...');
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(matches).to.have.length(0);
+  });
+
+  it('should stop immediately if regex matches an empty string', function() {
+    var element = React.createElement(Highlight, {search: /z*/}, 'Ez as 123, ABC...');
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(matches).to.have.length(0);
+
+    var element = React.createElement(Highlight, {search: /z*/}, 'zzz Ez as 123, ABC...');
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(matches).to.have.length(1);
+    expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('zzz');
   });
 
   it('should support escaping arbitrary string in search', function() {
