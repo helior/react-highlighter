@@ -30,7 +30,14 @@ describe('Highlight element', function() {
     expect(ReactDOM.findDOMNode(node).children.length).to.equal(3);
     expect(matches).to.have.length(1);
   });
+  it('should accept numbers as children', function() {
+    var element = React.createElement(Highlight, {search: '42'}, 1942);
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithClass(node, 'highlight');
 
+    expect(ReactDOM.findDOMNode(node).children.length).to.equal(2);
+    expect(matches).to.have.length(1);
+  });
   it('should allow empty search', function() {
     var element = React.createElement(Highlight, {search: ''}, 'The quick brown fox jumped over the lazy dog.');
     var node = TestUtils.renderIntoDocument(element);
