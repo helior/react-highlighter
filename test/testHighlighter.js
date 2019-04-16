@@ -123,6 +123,14 @@ describe('Highlight element', function() {
     expect(matches).to.have.length(0);
   });
 
+  it('should support regular expressions with the global parameter', function() {
+    var element = React.createElement(Highlight, {search: /brown|fox/g}, 'The quick brown fox jumped over the lazy dog.');
+    var node = TestUtils.renderIntoDocument(element);
+    var matches = TestUtils.scryRenderedDOMComponentsWithTag(node, 'mark');
+    expect(ReactDOM.findDOMNode(matches[0]).textContent).to.equal('brown');
+    expect(ReactDOM.findDOMNode(matches[1]).textContent).to.equal('fox');
+  });
+
   it('should stop immediately if regex matches an empty string', function() {
     var element = React.createElement(Highlight, {search: /z*/}, 'Ez as 123, ABC...');
     var node = TestUtils.renderIntoDocument(element);
